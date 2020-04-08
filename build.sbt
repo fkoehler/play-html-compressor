@@ -61,12 +61,12 @@ useGpg := true
 // Compiler settings
 //*******************************
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
-crossScalaVersions := Seq("2.13.0", "2.12.8", "2.11.11")
+crossScalaVersions := Seq("2.13.1", "2.12.11")
 
 scalacOptions ++= PartialFunction.condOpt(CrossVersion.partialVersion(scalaVersion.value)) {
-  case Some((2, v)) if v >= 11 && v <= 12 => Seq(
+  case Some((2, 12)) => Seq(
     "-deprecation", // Emit warning and location for usages of deprecated APIs.
     "-feature", // Emit warning and location for usages of features that should be imported explicitly.
     "-unchecked", // Enable additional warnings where generated code depends on assumptions.
