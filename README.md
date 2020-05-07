@@ -7,12 +7,13 @@ This project is a fork of http://github.com/mohiva/play-html-compressor.
 In your project/Build.scala:
 ```scala
 libraryDependencies ++= Seq(
-  "com.github.fkoehler" %% "play-html-compressor" % "1.0.0"
+  "com.github.fkoehler" %% "play-html-compressor" % "2.8.0"
 )
 ```
 
 ### History
 
+* For Play Framework 2.8 use version 2.8.0
 * For Play Framework 2.7 use version 1.0.0
 * For Play Framework 2.6 use version 0.7.1
 * For Play Framework 2.5 use version 0.6.3
@@ -29,7 +30,8 @@ following two examples shows how to define the filters with the default and the
 user-defined configurations.
 
 To provide the filters for your application you must define it as described in the Play
-Documentation ([Scala](https://www.playframework.com/documentation/2.7.x/ScalaHttpFilters#Using-filters), [Java](https://www.playframework.com/documentation/2.7.x/JavaHttpFilters#Using-filters)).
+Documentation ([Scala](https://www.playframework.com/documentation/2.8.x/ScalaHttpFilters#Using-filters),
+ [Java](https://www.playframework.com/documentation/2.8.x/JavaHttpFilters#Using-filters)).
 
 ### Provide filters
 
@@ -194,8 +196,8 @@ public class CustomHTMLCompressorFilter extends HTMLCompressorFilter {
 
 To provide your bindings for your user defined filter you must either create a new module
 or you can add the binding to your default DI module. This process is detailed documented
-for [Scala](https://www.playframework.com/documentation/2.7.x/ScalaDependencyInjection) and
-[Java](https://www.playframework.com/documentation/2.7.x/JavaDependencyInjection) users. So
+for [Scala](https://www.playframework.com/documentation/2.8.x/ScalaDependencyInjection) and
+[Java](https://www.playframework.com/documentation/2.8.x/JavaDependencyInjection) users. So
 please refer to this documentation.
 
 ##### Disable default modules
@@ -234,3 +236,7 @@ play.filters {
   }
 }
 ```
+
+### Release a new version
+
+To release a new version use `sbt +publish` 
