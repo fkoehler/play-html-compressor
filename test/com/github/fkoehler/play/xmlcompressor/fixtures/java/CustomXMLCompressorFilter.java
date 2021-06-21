@@ -17,6 +17,8 @@ import play.api.Configuration;
 
 import javax.inject.Inject;
 
+import scala.concurrent.ExecutionContext;
+
 /**
  * Custom implementation of the XML compressor filter.
  */
@@ -24,11 +26,13 @@ public class CustomXMLCompressorFilter extends XMLCompressorFilter {
 
     private Configuration configuration;
     private Materializer mat;
+    private ExecutionContext executionContext;
 
     @Inject
-    public CustomXMLCompressorFilter(Configuration configuration, Materializer mat) {
+    public CustomXMLCompressorFilter(Configuration configuration, Materializer mat, ExecutionContext executionContext) {
         this.configuration = configuration;
         this.mat = mat;
+        this.executionContext = executionContext;
     }
 
     @Override
@@ -47,5 +51,10 @@ public class CustomXMLCompressorFilter extends XMLCompressorFilter {
     @Override
     public Materializer mat() {
         return mat;
+    }
+
+    @Override
+    public ExecutionContext executionContext() {
+        return executionContext;
     }
 }

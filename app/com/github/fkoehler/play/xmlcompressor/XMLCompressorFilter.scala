@@ -19,6 +19,8 @@ import play.api.inject.Module
 import play.api.mvc._
 import play.api.{ Configuration, Environment }
 
+import scala.concurrent.ExecutionContext
+
 /**
  * Uses Google's XML Processor to compress the XML code of a response.
  */
@@ -61,6 +63,12 @@ class DefaultXMLCompressorFilter @Inject() (val configuration: Configuration, va
     )
     c
   }
+
+  /**
+   * ExecutionContext used by the Filter.
+   */
+  override implicit val executionContext: ExecutionContext =
+    ExecutionContext.global
 }
 
 /**

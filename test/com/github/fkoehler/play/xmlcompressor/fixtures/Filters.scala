@@ -19,6 +19,8 @@ import play.api.http.HttpFilters
 import play.api.mvc.EssentialFilter
 import play.filters.gzip.GzipFilter
 
+import scala.concurrent.ExecutionContext
+
 /**
  * A custom XML compressor filter.
  */
@@ -28,6 +30,9 @@ class CustomXMLCompressorFilter @Inject() (val configuration: Configuration, val
     c.setRemoveComments(false)
     c
   }
+
+  override implicit val executionContext: ExecutionContext =
+    ExecutionContext.global
 }
 
 /**
