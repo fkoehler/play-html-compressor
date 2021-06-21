@@ -20,6 +20,8 @@ import play.api.http.HttpFilters
 import play.api.mvc.EssentialFilter
 import play.filters.gzip.GzipFilter
 
+import scala.concurrent.ExecutionContext
+
 /**
  * A custom HTML compressor filter.
  */
@@ -38,6 +40,9 @@ class CustomHTMLCompressorFilter @Inject() (val configuration: Configuration, en
     c.setRemoveHttpsProtocol(true)
     c
   }
+
+  override implicit val executionContext: ExecutionContext =
+    ExecutionContext.global
 }
 
 /**

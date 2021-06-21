@@ -19,6 +19,8 @@ import play.api.Configuration;
 
 import javax.inject.Inject;
 
+import scala.concurrent.ExecutionContext;
+
 /**
  * Custom implementation of the HTML compressor filter.
  */
@@ -27,12 +29,14 @@ public class CustomHTMLCompressorFilter extends HTMLCompressorFilter {
     private Configuration configuration;
     private Environment environment;
     private Materializer mat;
+    private ExecutionContext executionContext;
 
     @Inject
-    public CustomHTMLCompressorFilter(Configuration configuration, Environment environment, Materializer mat) {
+    public CustomHTMLCompressorFilter(Configuration configuration, Environment environment, Materializer mat, ExecutionContext executionContext) {
         this.configuration = configuration;
         this.environment = environment;
         this.mat = mat;
+        this.executionContext = executionContext;
     }
 
     @Override
@@ -58,5 +62,10 @@ public class CustomHTMLCompressorFilter extends HTMLCompressorFilter {
     @Override
     public Materializer mat() {
         return mat;
+    }
+
+    @Override
+    public ExecutionContext executionContext() {
+        return executionContext;
     }
 }

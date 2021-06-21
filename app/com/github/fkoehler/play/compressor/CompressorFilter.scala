@@ -19,8 +19,7 @@ import play.api.http.HeaderNames._
 import play.api.http.{ HttpEntity, HttpProtocol }
 import play.api.mvc._
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{ ExecutionContext, Future }
 
 /**
  * Base implementation of a filter which makes it possible to compress either HTML or XML with the
@@ -50,6 +49,11 @@ abstract class CompressorFilter[C <: Compressor] extends Filter {
    * Materializer for the Filter.
    */
   override implicit val mat: Materializer
+
+  /**
+   * ExecutionContext used by the Filter.
+   */
+  implicit val executionContext: ExecutionContext
 
   /**
    * Apply the filter.
